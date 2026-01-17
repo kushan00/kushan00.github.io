@@ -7,9 +7,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build": "ng build",
-    "build:prod": "ng build --configuration production --base-href 'https://kushn00.github.io/'",
-    "deploy": "ng build --configuration production --base-href 'https://kushn00.github.io/' && npx angular-cli-ghpages --dir=dist/kushan-portfolio/browser --no-silent",
-    "deploy:ci": "ng build --configuration production --base-href 'https://kushn00.github.io/' && npx angular-cli-ghpages --dir=dist/kushan-portfolio/browser --repo=https://github.com/kushn00/kushn00.github.io.git"
+    "build:prod": "ng build --configuration production --base-href '/'",
+    "deploy": "ng build --configuration production --base-href '/' && npx angular-cli-ghpages --dir=dist/kushan-portfolio/browser --no-silent",
+    "deploy:ci": "ng build --configuration production --base-href '/' && npx angular-cli-ghpages --dir=dist/kushan-portfolio/browser --repo=https://github.com/kushn00/kushn00.github.io.git"
   },
   "private": true,
   "dependencies": {

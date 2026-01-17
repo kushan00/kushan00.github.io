@@ -1,21 +1,10 @@
-# BC | Angular Portfolio App
+# KD | Angular Portfolio App
 
-This is my personal portfolio website built with **Angular 21**, Typescript, HTML5, CSS3, Bootstrap, Bootstrap Icons, RxJS, Vite, Angular Material and tests in Jasmine. It's currently deployed on the web: [https://angular-portfolio-app-omega.vercel.app/](https://angular-portfolio-app-omega.vercel.app/)
+This is my personal portfolio website built with **Angular 21**, Typescript, HTML5, CSS3, Bootstrap, Bootstrap Icons, RxJS, Vite, Angular Material and tests in Jasmine. It's currently deployed on the web: [https://kushan00.github.io/](https://kushan00.github.io/)
 
 ![Kushan Dimantha's Angular Portfolio App](portfolio.png)
 
 This project was originally generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7 and then upgraded to version 21.0.6 on December 2025. In order to upgrade your own version, follow the commands laid out when you type `ng update`.
-
-Check [version history](#version-history) for more information.
-
-**Angular 21**: _This project's current version uses Angular 21 (December 2025 update). Successfully upgraded from Angular 19 without breaking changes._
-
-**Angular 19**: _This project's last tag for Angular 19 was tag [v2.0.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v2.0.0)._
-
-**Angular 17**: _This project's last tag for Angular 17 was tag [v1.3.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v1.3.0), you can download and use the portfolio in this version still._
-
-
-
 
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -24,9 +13,8 @@ Check [version history](#version-history) for more information.
 
 I'm Kushan Dimantha, a software developer.
 
-- [Github](https://www.github.com/barbaracalderon)
-- [Linkedin](https://www.linkedin.com/in/barbaracalderondev/?locale=en_US)
-- [Twitter](https://www.x.com/bederoni)
+- [Github](https://www.github.com/kushan00)
+- [Linkedin](https://www.linkedin.com/in/kushan-dimantha/)
 
 ## The Project
 
@@ -74,23 +62,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to test the project. This will launch the Karma test runner and execute all Jasmine test specs (`*.spec.ts` files).
 
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## About
 
 This portfolio was designed and developed by myself, Kushan Dimantha, using frontend software skills for a dynamic and responsive web application.
 
-## Version History
-
-| Version | Date       | Description                                      |
-|---------|------------|--------------------------------------------------|
-| [2.1.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v2.1.0)   | Dec 2025 | Upgrade Angular v19 to v21. 
-| [2.0.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v2.0.0)   | Apr 2025   | `!breaking changes` Upgrade Angular v17 to v19. Replace "accordion" with "expansion". Replace "carousel" with "swiper". Remove ngx-bootstrap lib. Refactor breaking code. Update tests with Jasmine framework.|
-| [1.3.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v1.3.0)   | Mar 2025   | Added "forecast-cli" project to portfolio.|
-| [1.2.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v1.2.0)   | Feb 2025   | Added 5 projects to portfolio. Resolved Vite overlay issue.|
-| [1.1.1](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v1.1.1)   | Jan 2025   | Updated content on about me page. Resolved issues with dependencies alerts by upgrading.|
-| [1.1.0](https://github.com/barbaracalderon/angular-portfolio-app/releases/tag/v1.1.0)   | Jan 2025   | Updated content on home and about me pages. Fixed window width issues. Carousel anchor tags no longer green style. Resolved issue with carousel indicators not displaying. Added license.|
-| 1.0.1   | Jun 2024   | Added more projects to the portfolio page.       |
-| 1.0.0   | May 2024   | Initial release of the portfolio.                |
