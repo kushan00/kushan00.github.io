@@ -8,30 +8,10 @@
     </div>
     
     <div class="modal-body">
-      <div class="swiper-container-wrapper">
-        <swiper-container [config]="swiperConfig" init="false">
-          @for (picture of card.pictures; track $index) {
-            <swiper-slide>
-              <div class="slide-container">
-                <img [src]="picture" alt="slide {{$index + 1}}" class="swiper-image">
-              </div>
-            </swiper-slide>
-          }
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
-        </swiper-container>
-      </div>
 
       <div class="content-section"> 
         <h1 class="modal-description">Description</h1>
         <p class="p-modal">{{ card.description }}</p>
-        <p class="p-modal">
-          <strong><span class="default-highlight">Github</span></strong>: 
-          <a [href]="card.projectLink" target="_blank" class="github a-green">
-            {{ card.projectLink }}
-          </a>
-        </p>
 
         <mat-divider class="divider"></mat-divider>
         

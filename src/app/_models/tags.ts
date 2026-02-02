@@ -9,11 +9,11 @@ export class Tag {
     static readonly TYPESCRIPT = new Tag('Typescript', '#192129');
     static readonly JAVASCRIPT = new Tag('Javascript', '#192129');
     static readonly HTML5 = new Tag('HTML5', '#192129');
-    static readonly CSS3 = new Tag('CSS3', '#192129');
-    static readonly BOOTSTRAP = new Tag('Bootstrap', '#192129');
+    static readonly TAILWIND_CSS = new Tag('Tailwind CSS', '#192129');
+    static readonly GOOGLE_MAPS = new Tag('Google Maps', '#192129');
     static readonly DOCKER = new Tag('Docker', '#355158');
     static readonly DOCKERCOMPOSE = new Tag('Docker Compose', '#355158');
-    static readonly SQLITE = new Tag('SQLite', '#355158');
+    static readonly PAYHERE = new Tag('PayHere', '#355158');
     static readonly GOLANG = new Tag('Golang', '#457189');
     static readonly REACT = new Tag('React JS', '#192129');
     static readonly NEXTJS = new Tag('Next JS', '#192129');
@@ -23,17 +23,19 @@ export class Tag {
     static readonly FLUTTER = new Tag('Flutter', '#5a7581');
     static readonly REACTNATIVE = new Tag('React Native', '#192129');
     static readonly GO = new Tag('GO', '#457189');
-    static readonly MACHINELEARNING = new Tag('Machine Learning', '#4a6a77');
+    static readonly LARAVEL = new Tag('Laravel', '#4a6a77');
     static readonly SOCKETIO = new Tag('Socket IO', '#457189');
     static readonly REDIS = new Tag('Redis', '#355158');
     static readonly MONGODB = new Tag('Mongo DB', '#355158');
-    static readonly FLASKAPI = new Tag('Flask API', '#4a6a77');
     static readonly PEBBLEDB = new Tag('Pebble DB', '#355158');
+    static readonly KUBERNETES = new Tag('Kubernetes', '#355158');
+    static readonly POSTGRES = new Tag('PostGresSQL', '#355158')
     static readonly AWS = new Tag('AWS', '#5a7581');
     static readonly CICD = new Tag('CI/CD', '#5a7581');
     static readonly FIREBASE = new Tag('Firebase', '#5a7581');
     static readonly ENCRYPTION = new Tag('Encryption', '#355158');
     static readonly SHAMIRSECRET = new Tag('Shamir Secret', '#355158');
+
 
 
 

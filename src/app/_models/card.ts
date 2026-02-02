@@ -6,6 +6,5 @@ export interface Card {
     summary: string;
     description: string;
     projectLink: string;
-    pictures: string[];
     tags: Tag[];
 }
