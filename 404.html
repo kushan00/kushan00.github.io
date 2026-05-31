@@ -55,6 +55,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
+<!-- Tech icons for the skills sphere -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <!-- THREE.JS — deferred so it never blocks first paint -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -103,8 +107,9 @@ body::after{content:"";position:fixed;inset:0;z-index:3;pointer-events:none;opac
 @media (pointer:coarse){.cursor,.cursor-ring{display:none}}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-content:space-between;
-  align-items:center;padding:22px clamp(20px,5vw,60px);mix-blend-mode:difference}
+nav{position:fixed;top:0;left:0;right:0;margin-inline:auto;max-width:1440px;width:100%;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px clamp(20px,6vw,90px);mix-blend-mode:difference}
 .brand{font-family:var(--font-disp);font-weight:800;font-size:19px;letter-spacing:-.02em}
 .brand span{color:var(--accent)}
 .navlinks{display:flex;gap:26px;font-family:var(--font-mono);font-size:13px}
@@ -130,7 +135,7 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-conte
 
 /* LAYOUT */
 main{position:relative;z-index:10}
-section{position:relative;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);}
+section{position:relative;max-width:1440px;margin-inline:auto;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);}
 .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.32em;text-transform:uppercase;
   color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:12px}
 .eyebrow::before{content:"";width:34px;height:1px;background:var(--accent);display:inline-block}
@@ -141,7 +146,8 @@ section{position:relative;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);}
 .hl{color:var(--accent)}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px}
+#hero{max-width:1440px;margin-inline:auto;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding:120px clamp(20px,6vw,90px) 0}
 .hero-tag{font-family:var(--font-mono);font-size:13px;color:var(--ink-dim);letter-spacing:.2em;margin-bottom:18px}
 .hero-tag b{color:var(--accent)}
 .hero-title{font-family:var(--font-disp);font-weight:800;line-height:.92;letter-spacing:-.03em;
@@ -217,8 +223,10 @@ section{position:relative;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);}
 #tagSphere{position:relative;width:360px;height:360px;transform-style:preserve-3d;cursor:grab}
 #tagSphere:active{cursor:grabbing}
 .tag{position:absolute;left:50%;top:50%;font-family:var(--font-mono);font-size:13px;white-space:nowrap;
-  padding:6px 11px;border:1px solid var(--line);border-radius:20px;background:rgba(13,13,20,.5);
+  display:flex;align-items:center;gap:7px;
+  padding:6px 12px;border:1px solid var(--line);border-radius:20px;background:rgba(13,13,20,.55);
   backdrop-filter:blur(2px);will-change:transform,opacity;transition:color .2s,border-color .2s,background .2s}
+.tag i{font-size:15px;line-height:1}
 .tag:hover{color:var(--accent);border-color:var(--accent);background:rgba(215,255,62,.08)}
 .skill-bars{display:flex;flex-direction:column;gap:20px}
 .bar-row .top{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:13px;margin-bottom:8px}
@@ -260,8 +268,8 @@ section{position:relative;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);}
   border-radius:40px;transition:.3s}
 .socials a:hover{background:var(--accent);color:#07070b;border-color:var(--accent);transform:translateY(-3px)}
 
-footer{padding:38px clamp(20px,6vw,90px);border-top:1px solid var(--line);display:flex;
-  justify-content:space-between;font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);flex-wrap:wrap;gap:10px}
+footer{max-width:1440px;margin-inline:auto;padding:38px clamp(20px,6vw,90px);border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);flex-wrap:wrap;gap:10px}
 
 /* LOADER */
 #loader{position:fixed;inset:0;z-index:9000;background:var(--bg);display:flex;align-items:center;
@@ -673,29 +681,54 @@ document.querySelectorAll('[data-tilt]').forEach(c=>tilt(c,7));
    ======================================================================= */
 (function buildTagSphere(){
   const host=document.getElementById('tagSphere');
-  const tags=["React","Next.js","Angular","TypeScript","JavaScript","Node.js","NestJS","Express",
-              "Go","Flutter","Electron","MongoDB","PostgreSQL","Redis","Docker","Kubernetes",
-              "AWS","Socket.IO","REST APIs","CI/CD","Encryption"];
+  const tags=[
+    {n:"React",      i:"devicon-react-original colored"},
+    {n:"Next.js",    i:"devicon-nextjs-plain"},
+    {n:"Angular",    i:"devicon-angular-plain colored"},
+    {n:"TypeScript", i:"devicon-typescript-plain colored"},
+    {n:"JavaScript", i:"devicon-javascript-plain colored"},
+    {n:"Node.js",    i:"devicon-nodejs-plain colored"},
+    {n:"NestJS",     i:"devicon-nestjs-plain colored"},
+    {n:"Express",    i:"devicon-express-original"},
+    {n:"Go",         i:"devicon-go-plain colored"},
+    {n:"Flutter",    i:"devicon-flutter-plain colored"},
+    {n:"Electron",   i:"devicon-electron-original colored"},
+    {n:"MongoDB",    i:"devicon-mongodb-plain colored"},
+    {n:"PostgreSQL", i:"devicon-postgresql-plain colored"},
+    {n:"Redis",      i:"devicon-redis-plain colored"},
+    {n:"Docker",     i:"devicon-docker-plain colored"},
+    {n:"Kubernetes", i:"devicon-kubernetes-plain colored"},
+    {n:"AWS",        i:"fa-brands fa-aws"},
+    {n:"Socket.IO",  i:"fa-solid fa-tower-broadcast"},
+    {n:"REST APIs",  i:"fa-solid fa-plug"},
+    {n:"CI/CD",      i:"fa-solid fa-infinity"},
+    {n:"Encryption", i:"fa-solid fa-shield-halved"},
+  ];
   const R=160, items=[];
   tags.forEach((t,i)=>{
-    const el=document.createElement('div');el.className='tag';el.textContent=t;el.setAttribute('data-cursor','');
+    const el=document.createElement('div');el.className='tag';el.setAttribute('data-cursor','');
+    el.innerHTML=`<i class="${t.i}" aria-hidden="true"></i><span>${t.n}</span>`;
     host.appendChild(el);
     const phi=Math.acos(-1+(2*i+1)/tags.length), theta=Math.sqrt(tags.length*Math.PI)*phi;
     items.push({el,x:R*Math.cos(theta)*Math.sin(phi),y:R*Math.sin(theta)*Math.sin(phi),z:R*Math.cos(phi)});
   });
-  let ax=.5,ay=.5,tax=.00018,tay=.00028,drag=false,lx=0,ly=0;
+  // gentle base angular velocity (radians PER FRAME — we rotate by this delta each frame)
+  const BX=.0010, BY=.0018;
+  let tax=BX, tay=BY, drag=false, lx=0, ly=0;
   host.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;host.setPointerCapture(e.pointerId);});
   host.addEventListener('pointerup',()=>drag=false);
-  host.addEventListener('pointermove',e=>{if(!drag)return;tay=(e.clientX-lx)*.00012;tax=-(e.clientY-ly)*.00012;lx=e.clientX;ly=e.clientY;});
+  host.addEventListener('pointermove',e=>{if(!drag)return;tay=(e.clientX-lx)*.004;tax=-(e.clientY-ly)*.004;lx=e.clientX;ly=e.clientY;});
   (function spin(){
-    if(!drag){tay+=(.00028-tay)*.015;tax+=(.00018-tax)*.015;}
-    ay+=tay;ax+=tax;
-    const sx=Math.sin(ax),cx=Math.cos(ax),sy=Math.sin(ay),cy=Math.cos(ay);
-    items.forEach(it=>{let x=it.x*cy-it.z*sy,z=it.x*sy+it.z*cy;let y=it.y*cx-z*sx;z=it.y*sx+z*cx;
+    if(!drag){tay+=(BY-tay)*.04;tax+=(BX-tax)*.04;}   // ease back to slow drift
+    const sx=Math.sin(tax),cx=Math.cos(tax),sy=Math.sin(tay),cy=Math.cos(tay);
+    items.forEach(it=>{
+      let x=it.x*cy-it.z*sy, z=it.x*sy+it.z*cy;       // yaw by small delta
+      let y=it.y*cx-z*sx;    z=it.y*sx+z*cx;          // pitch by small delta
       it.x=x;it.y=y;it.z=z;
       const scale=(z+R)/(2*R)*.6+.55, op=(z+R)/(2*R)*.75+.25;
       it.el.style.transform=`translate(-50%,-50%) translate3d(${x}px,${y}px,${z}px) scale(${scale})`;
-      it.el.style.opacity=op;it.el.style.zIndex=Math.round(z+R);});
+      it.el.style.opacity=op;it.el.style.zIndex=Math.round(z+R);
+    });
     requestAnimationFrame(spin);
   })();
 })();
