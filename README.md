@@ -1,69 +1,62 @@
-# KD | Angular Portfolio App
+# Kushan Dimantha — Interactive 3D Portfolio
 
-This is my personal portfolio website built with **Angular 21**, Typescript, HTML5, CSS3, Bootstrap, Bootstrap Icons, RxJS, Vite, Angular Material and tests in Jasmine. It's currently deployed on the web: [https://kushan00.github.io/](https://kushan00.github.io/)
+My personal portfolio: a fast, self-contained, SEO-optimized **single-page site**
+with interactive 3D animations, built with vanilla HTML/CSS/JS and **Three.js**.
+Live at **[https://kushan00.github.io/](https://kushan00.github.io/)**
 
-![Kushan Dimantha's Angular Portfolio App](portfolio.png)
-
-This project was originally generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7 and then upgraded to version 21.0.6 on December 2025. In order to upgrade your own version, follow the commands laid out when you type `ng update`.
-
+![Kushan Dimantha — Portfolio](assets/og-cover.png)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Author
 
-I'm Kushan Dimantha, a software developer.
+I'm Kushan Dimantha, a Full-Stack Software Engineer from Sri Lanka.
 
-- [Github](https://www.github.com/kushan00)
-- [Linkedin](https://www.linkedin.com/in/kushan-dimantha/)
+- [GitHub](https://www.github.com/kushan00)
+- [LinkedIn](https://www.linkedin.com/in/kushan-dimantha/)
 
 ## The Project
 
-This portfolio is a **dynamic and responsive web application** built using **Angular**, showcasing my skills and projects as a software developer. The design and development of this portfolio aimed to provide a seamless user experience across different devices while highlighting various aspects of my professional journey. 
+A single-page experience that brings together everything — **About, Experience,
+Education & Research, Skills, Projects and Contact** — into one scrollable page
+with an engineer-themed, interactive **3D distributed-systems network** (connected
+service nodes orbiting a morphing compute core) rendered with Three.js.
 
-The potfolio has sections of home, about, education, portfolio projects and contact information. Key features are its dynamic content, the responsive design and modern aesthetics.
+It is built content-first: all text is real HTML (no client-side rendering), so it
+loads instantly and is fully crawlable. The 3D layer is progressive enhancement and
+degrades gracefully when WebGL is unavailable.
 
-## Technologies Used
+### Highlights
 
-- **Angular 21** - Latest version with standalone components.
-- **TypeScript 5.9.3** - Strongly typed JavaScript superset.
-- **Angular Material 21** - Material Design components.
-- **Bootstrap 5** - Responsive CSS framework.
-- **Bootstrap Icons** - Clean SVG icons.
-- **Swiper.js 11** - Modern touch slider.
-- **Angular CLI 21** - Official build tooling.
-- **RxJS 7** - Reactive programming library.
-- **Vite** - Next-gen frontend tooling (via Angular CLI).
-- **Jasmine 5** - Behavior-driven testing framework.
-- **Karma 6** - Test runner for Angular.
-- **Vercel** - Cloud platform for static sites.
+- **Interactive 3D scene** — draggable network graph + morphing core + particle field (Three.js)
+- **Single page**, anchor-navigated, with a custom cursor, scroll reveals and tilt cards
+- **3D skill tag-sphere** and animated proficiency bars
+- **17 projects** with live category filtering (Web / Mobile / Blockchain / Backend / DevOps)
+- **SEO** — meta + Open Graph + Twitter tags, JSON-LD `Person` schema, `robots.txt`, `sitemap.xml`
+- **Theme** — dark base with an electric-lime accent (`#07070b` / `#d7ff3e`)
 
-## Development server
+## Tech
 
-You can run this project locally too.
+- HTML5 / CSS3 (no framework)
+- Vanilla JavaScript
+- [Three.js](https://threejs.org/) (r128, via CDN)
+- Google Fonts: Syne, Instrument Sans, Space Mono
 
-Clone this repo.
+## Run locally
 
-Run `ng serve` for a dev server. 
+It's a static site — no build step. Just serve the folder:
 
-Navigate to `http://localhost:4200/`. 
+```bash
+python -m http.server 8000
+# then open http://localhost:8000
+```
 
-The application will automatically reload if you change any of the source files.
+## Deployment
 
-## Code scaffolding
+Every push to `main` triggers a **build-free** GitHub Actions workflow
+([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) that assembles the
+static files and publishes them to the `gh-pages` branch — deploys in seconds.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## License
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Test
-
-Run `ng test` to test the project. This will launch the Karma test runner and execute all Jasmine test specs (`*.spec.ts` files).
-
-
-
-## About
-
-This portfolio was designed and developed by myself, Kushan Dimantha, using frontend software skills for a dynamic and responsive web application.
-
+MIT — see [LICENSE](LICENSE).

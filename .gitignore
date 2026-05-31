@@ -1,3 +1,6 @@
-/dist
-/node_modules
-/.angular
+# build output (generated in CI)
+/_site
+
+# OS / editor
+.DS_Store
+Thumbs.db
