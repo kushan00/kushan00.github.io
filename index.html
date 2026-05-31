@@ -76,7 +76,7 @@
   --font-mono: 'Space Mono', monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{
   background:var(--bg);color:var(--ink);font-family:var(--font-body);
   overflow-x:hidden;cursor:none;
@@ -112,7 +112,21 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-conte
 .navlinks a:hover{opacity:1}
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--accent);transition:width .3s}
 .navlinks a:hover::after{width:100%}
-@media(max-width:860px){.navlinks{display:none}}
+.navtoggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:none;padding:6px;z-index:61}
+.navtoggle span{width:26px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.navtoggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.navtoggle.open span:nth-child(2){opacity:0}
+.navtoggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:860px){
+  nav{mix-blend-mode:normal;background:rgba(7,7,11,.55);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:15px clamp(18px,5vw,60px)}
+  .navtoggle{display:flex}
+  .navlinks{position:fixed;inset:0;height:100dvh;width:100%;background:rgba(7,7,11,.97);backdrop-filter:blur(12px);
+    flex-direction:column;justify-content:center;align-items:center;gap:30px;font-size:20px;
+    transform:translateX(100%);transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:60}
+  .navlinks.open{transform:none}
+  .navlinks a{opacity:.92;font-size:21px;letter-spacing:.04em}
+}
 
 /* LAYOUT */
 main{position:relative;z-index:10}
@@ -152,19 +166,20 @@ section{position:relative;padding:clamp(80px,12vh,150px) clamp(20px,6vw,90px);}
 @media(max-width:860px){.drag-note{display:none}}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(30px,5vw,70px);align-items:start}
-@media(max-width:920px){.about-grid{grid-template-columns:1fr}}
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.about-media{order:-1;position:sticky;top:110px}
+@media(max-width:920px){.about-grid{grid-template-columns:1fr}.about-media{position:static;max-width:230px;margin:0 auto 10px}}
 .about-body p{color:var(--ink-dim);font-size:clamp(15px,1.4vw,17px);line-height:1.85;margin-bottom:18px}
 .about-body b{color:var(--ink);font-weight:600}
 .about-stats{display:flex;gap:36px;margin-top:32px;flex-wrap:wrap}
 .stat .n{font-family:var(--font-disp);font-weight:800;font-size:38px;color:var(--accent)}
 .stat .l{font-family:var(--font-mono);font-size:11px;color:var(--ink-dim);letter-spacing:.1em}
-.photo-stack{display:flex;flex-direction:column;gap:18px;position:sticky;top:90px}
-.photo-card{border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line);
-  transform-style:preserve-3d;transition:transform .15s ease-out;background:var(--bg-2)}
-.photo-card img{width:100%;height:100%;object-fit:cover;opacity:.92}
-.photo-card .cap{position:absolute;left:0;bottom:0;width:100%;padding:14px 16px;font-family:var(--font-mono);
-  font-size:11px;color:var(--ink);background:linear-gradient(transparent,rgba(7,7,11,.85));letter-spacing:.05em}
+.portrait{border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  background:linear-gradient(160deg,#16161f,#0d0d14);padding:14px;transition:transform .15s ease-out;
+  box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.portrait img{width:100%;border-radius:12px;display:block}
+.portrait .tagline{font-family:var(--font-mono);font-size:11px;color:var(--accent);
+  text-align:center;margin-top:12px;letter-spacing:.12em}
 .quote{margin-top:30px;border-left:2px solid var(--accent);padding:6px 0 6px 20px;
   font-family:var(--font-disp);font-size:clamp(16px,2vw,20px);line-height:1.5;color:var(--ink)}
 
@@ -256,6 +271,37 @@ footer{padding:38px clamp(20px,6vw,90px);border-top:1px solid var(--line);displa
 #loader .lbar{width:160px;height:2px;background:var(--line);overflow:hidden}
 #loader .lbar i{display:block;height:100%;width:40%;background:var(--accent);animation:load 1s infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
+
+/* =========================================================================
+   MOBILE / RESPONSIVE POLISH
+   ========================================================================= */
+@media(max-width:760px){
+  section{padding:88px 22px}
+  #hero{padding-top:104px;min-height:auto;padding-bottom:90px}
+  .hero-title{font-size:clamp(44px,16vw,96px)}
+  .hero-sub{max-width:100%}
+  .hero-cta{gap:12px}
+  .btn{padding:13px 20px;font-size:12px}
+  .about-stats{gap:26px}
+  .stat .n{font-size:32px}
+  .timeline{padding-left:24px}
+  .tl-item::before{left:-31px}
+  .skills-grid{gap:30px}
+  .sphere-wrap{height:340px}
+  #tagSphere{width:280px;height:280px}
+  .contact-big{font-size:clamp(36px,13vw,72px)}
+  .socials a{padding:11px 18px;font-size:12px}
+  footer{flex-direction:column;text-align:center;align-items:center}
+}
+@media(max-width:420px){
+  .hero-title{font-size:clamp(38px,17vw,80px)}
+  .proj-grid{grid-template-columns:1fr}
+  .card{min-height:auto}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{transition:none;opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -269,7 +315,8 @@ footer{padding:38px clamp(20px,6vw,90px);border-top:1px solid var(--line);displa
 
 <nav>
   <div class="brand">KUSHAN<span>.</span></div>
-  <div class="navlinks">
+  <button class="navtoggle" id="navToggle" aria-label="Toggle menu" data-cursor><span></span><span></span><span></span></button>
+  <div class="navlinks" id="navLinks">
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -329,10 +376,10 @@ footer{padding:38px clamp(20px,6vw,90px);border-top:1px solid var(--line);displa
           <div class="stat"><div class="n">∞</div><div class="l">CURIOSITY</div></div>
         </div>
       </div>
-      <div class="reveal">
-        <div class="photo-stack">
-          <div class="photo-card" data-tilt><img src="assets/kd01a.jpg" alt="Kushan Dimantha at his graduation" loading="lazy"><div class="cap">Graduation · SLIIT</div></div>
-          <div class="photo-card" data-tilt><img src="assets/kd02a.jpg" alt="Kushan Dimantha at Mount Lavinia Beach" loading="lazy"><div class="cap">Mount Lavinia, Sri Lanka</div></div>
+      <div class="reveal about-media">
+        <div class="portrait" data-tilt>
+          <img src="assets/kd.png" alt="Kushan Dimantha — Full-Stack Software Engineer" loading="lazy">
+          <div class="tagline">&lt;/&gt; Kushan Dimantha</div>
         </div>
       </div>
     </div>
@@ -560,6 +607,18 @@ document.getElementById('filters').addEventListener('click',e=>{
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* =======================================================================
+   MOBILE NAV TOGGLE
+   ======================================================================= */
+(function(){
+  const t=document.getElementById('navToggle'), l=document.getElementById('navLinks');
+  if(!t||!l)return;
+  t.addEventListener('click',()=>{t.classList.toggle('open');l.classList.toggle('open');
+    document.body.style.overflow=l.classList.contains('open')?'hidden':'';});
+  l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    t.classList.remove('open');l.classList.remove('open');document.body.style.overflow='';}));
+})();
+
+/* =======================================================================
    TYPED ROLE
    ======================================================================= */
 (function(){
@@ -624,12 +683,12 @@ document.querySelectorAll('[data-tilt]').forEach(c=>tilt(c,7));
     const phi=Math.acos(-1+(2*i+1)/tags.length), theta=Math.sqrt(tags.length*Math.PI)*phi;
     items.push({el,x:R*Math.cos(theta)*Math.sin(phi),y:R*Math.sin(theta)*Math.sin(phi),z:R*Math.cos(phi)});
   });
-  let ax=.5,ay=.5,tax=.0006,tay=.0009,drag=false,lx=0,ly=0;
+  let ax=.5,ay=.5,tax=.00018,tay=.00028,drag=false,lx=0,ly=0;
   host.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;host.setPointerCapture(e.pointerId);});
   host.addEventListener('pointerup',()=>drag=false);
-  host.addEventListener('pointermove',e=>{if(!drag)return;tay=(e.clientX-lx)*.00018;tax=-(e.clientY-ly)*.00018;lx=e.clientX;ly=e.clientY;});
+  host.addEventListener('pointermove',e=>{if(!drag)return;tay=(e.clientX-lx)*.00012;tax=-(e.clientY-ly)*.00012;lx=e.clientX;ly=e.clientY;});
   (function spin(){
-    if(!drag){tay+=(.0009-tay)*.02;tax+=(.0006-tax)*.02;}
+    if(!drag){tay+=(.00028-tay)*.015;tax+=(.00018-tax)*.015;}
     ay+=tay;ax+=tax;
     const sx=Math.sin(ax),cx=Math.cos(ax),sy=Math.sin(ay),cy=Math.cos(ay);
     items.forEach(it=>{let x=it.x*cy-it.z*sy,z=it.x*sy+it.z*cy;let y=it.y*cx-z*sx;z=it.y*sx+z*cx;
@@ -742,9 +801,9 @@ function animate(){
 
   // rotation w/ drag inertia
   ryv+=vy;rxv+=vx;
-  if(!drag){vy*=.94;vx*=.94;ryv+=.0018;}
+  if(!drag){vy*=.95;vx*=.95;ryv+=.0011;}
   [core,wire].forEach(o=>{o.rotation.y=ryv;o.rotation.x=rxv;});
-  netGroup.rotation.y=ryv*0.6+t*.04;netGroup.rotation.x=rxv*0.6+Math.sin(t*.2)*.15;
+  netGroup.rotation.y=ryv*0.6+t*.022;netGroup.rotation.x=rxv*0.6+Math.sin(t*.18)*.12;
   particles.rotation.y=t*.02;
 
   // recede on scroll past hero
